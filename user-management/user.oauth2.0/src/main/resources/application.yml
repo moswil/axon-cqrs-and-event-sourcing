@@ -1,0 +1,40 @@
+
+# spring
+server:
+  port: 8084
+
+# mongodb
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: user
+      auto-index-creation: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+cmd:
+  api:
+    trace: true
+
+logging:
+  level:
+    root: warn
+    org.springframework.web: debug
+    com.github.axonmulti: debug
+    org.springframework.boot: info
+    org.axonframework: debug
+
+# security
+security:
+  oauth2:
+    client:
+      client-id: learnBankId
+      client-secret: learnBankSecret
+      signing-key: learnBankSigningKey
+      token-validity-seconds: 300
+      refresh-token-validity-seconds: 1500

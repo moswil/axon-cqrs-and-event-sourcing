@@ -1,0 +1,22 @@
+server:
+  port: 9091
+
+spring:
+  data:
+    mongodb:
+      database: bank
+      host: localhost
+      port: 27017
+
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: learnBankSigningKey
+
+logging:
+  level:
+    root: "warn"
+    org.springframework.web: "debug"
+    org.hibernate: "error"
+

@@ -1,0 +1,20 @@
+# spring
+server:
+  port: 8082
+
+# mongodb
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: user
+      auto-index-creation: true
+
+
+# security
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: learnBankSigningKey

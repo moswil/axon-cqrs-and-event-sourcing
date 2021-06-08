@@ -1,0 +1,33 @@
+# spring
+server:
+  port: 8081
+
+# mongodb
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: user
+      auto-index-creation: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+cmd:
+  api:
+    trace: true
+
+logging:
+  level:
+    root: warn
+    org.springframework.web: debug
+
+# security
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: learnBankSigningKey

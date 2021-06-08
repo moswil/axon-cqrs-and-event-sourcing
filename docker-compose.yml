@@ -1,0 +1,54 @@
+version: "3.7"
+
+services:
+  axon:
+    image: axoniq/axonserver:latest
+    ports:
+      - "8024:8024"
+      - "8124:8124"
+    container_name: axon-server
+    restart: always
+    networks:
+      - spring-bank
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    container_name: mongo-container
+    restart: always
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - spring-bank
+
+  mysql:
+    image: mariadb
+    restart: always
+    container_name: mysql-container
+    volumes:
+      - mysql_data_container:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env/mariadb.env
+    networks:
+      - spring-bank
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=mysql-container
+    networks:
+      - spring-bank
+
+volumes:
+  mysql_data_container:
+  mongodb_data_container:
+
+networks:
+  spring-bank:

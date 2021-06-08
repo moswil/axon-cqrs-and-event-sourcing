@@ -1,0 +1,24 @@
+server:
+  port: 2000
+
+# configure the backend microservices
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: userQueryApi
+          uri: http://localhost:8082/users/**
+          predicates:
+            - Path=/api/v1/users/**
+
+        - id: userCmdAPI-Register
+          uri: http://localhost:8081/users
+          predicates:
+            - Path=/api/v1/users
+
+#        - id: userCmdAPI-Update-Delete
+#          uri: http://localhost:8081/users/**
+#          predicates:
+#            - Path=/api/v1/users/**
+
+
